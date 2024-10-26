@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+</head>
+
+<body>
+
+<h2>Tela de Login Customizável</h2>
+
+<form action="#" th:action="@{/authenticateTheUser}" method="POST">
+
+    <div th:if="${param.error}">
+        <i>Usuário ou senha invalida!</i>
+    </div>
+
+    <p>
+        Username: <input type="text" name="username" />
+    </p>
+
+    <p>
+        Password: <input type="password" name="password" />
+    </p>
+
+    <input type="submit" value="Login" />
+
+</form>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
