@@ -27,12 +27,10 @@
                                     <div class="col-xs-15">
                                         <div>
                                             <!-- Check for login error -->
-
-
                                             <div th:if="${param.error}">
 
                                                 <div class="alert alert-danger col-xs-offset-1 col-xs-10">
-                                                    Invalid username and password.
+                                                    Senha invalida
                                                 </div>
 
                                             </div>
@@ -56,6 +54,15 @@
                                     <div class="col-sm-6 controls">
                                         <button type="submit" class="btn btn-success">Login</button>
                                     </div>
+                                </div>
+
+                                <!-- Check for logout error -->
+                                <div th:if="${param.logout}">
+
+                                    <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                                        Saiu.
+                                    </div>
+
                                 </div>
 
                             </form>
