@@ -15,31 +15,54 @@ public class DemoSecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
 
-        UserDetails joao = User.builder()
+        UserDetails zallera = User.builder()
                 .username("zallera")
-                .password("{noop}321654")
-                .roles("Funcionario")
+                .password("{noop}potatoes")
+                .roles("FUNCIONARIO, GERENTE, ADM")
                 .build();
 
         UserDetails maria = User.builder()
                 .username("maria")
-                .password("{noop}test123")
-                .roles("Funcionario, Gerente")
+                .password("{noop}22")
+                .roles("FUNCIONARIO, GERENTE")
                 .build();
 
         UserDetails pedro = User.builder()
                 .username("pedro")
-                .password("{noop}test123")
-                .roles("Funcionario")
+                .password("{noop}22")
+                .roles("FUNCIONARIO")
                 .build();
-        return new InMemoryUserDetailsManager(joao, maria, pedro);
+
+        UserDetails luca = User.builder()
+                .username("luca")
+                .password("{noop}22")
+                .roles("FUNCIONARIO")
+                .build();
+
+        UserDetails lore = User.builder()
+                .username("lore")
+                .password("{noop}22")
+                .roles("GERENTE, FUNCIONARIO")
+                .build();
+
+        UserDetails osmund = User.builder()
+                .username("osmund")
+                .password("{noop}22")
+                .roles("FUNCIONARIO")
+                .build();
+
+        return new InMemoryUserDetailsManager(zallera, maria, pedro, osmund, lore, luca);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests(configurer ->
-                configurer.anyRequest().authenticated()
+                configurer
+                        .requestMatchers("/").hasRole("FUNCIONARIO")
+                        .requestMatchers("/Gerentes/**").hasRole("GERENTES")
+                        .requestMatchers("/systems/**").hasRole("ADM")
+                        .anyRequest().authenticated()
                 ).formLogin(form->
                     form.loginPage("/myLoginPage")
                             .loginProcessingUrl("/authenticateTheUser")
