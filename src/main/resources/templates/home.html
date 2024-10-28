@@ -20,7 +20,15 @@
     Cargo(s): <span sec:authentication="principal.authorities"></span>
 </p>
 
+<!-- add um link para "/gerentes" -->
+<hr>
+<p>
+    <a th:href="@{/gerentes}">Lista de gerentes</a>
+    Acesso dos gerentes.
+</p>
+<hr>
 
+<!-- Botão de Logout -->
 <form action="#" th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout">
 </form>
