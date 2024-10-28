@@ -18,13 +18,13 @@ public class DemoSecurityConfig {
         UserDetails zallera = User.builder()
                 .username("zallera")
                 .password("{noop}potatoes")
-                .roles("FUNCIONARIO, GERENTE, ADM")
+                .roles("FUNCIONARIO")
                 .build();
 
         UserDetails maria = User.builder()
                 .username("maria")
                 .password("{noop}22")
-                .roles("FUNCIONARIO, GERENTE")
+                .roles("FUNCIONARIO")
                 .build();
 
         UserDetails pedro = User.builder()
@@ -42,7 +42,7 @@ public class DemoSecurityConfig {
         UserDetails lore = User.builder()
                 .username("lore")
                 .password("{noop}22")
-                .roles("GERENTE, FUNCIONARIO")
+                .roles("FUNCIONARIO")
                 .build();
 
         UserDetails osmund = User.builder()
@@ -60,7 +60,7 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/").hasRole("FUNCIONARIO")
-                        .requestMatchers("/Gerentes/**").hasRole("GERENTES")
+                        .requestMatchers("/gerentes/**").hasRole("GERENTES")
                         .requestMatchers("/systems/**").hasRole("ADM")
                         .anyRequest().authenticated()
                 ).formLogin(form->
