@@ -16,8 +16,8 @@ public class DemoSecurityConfig {
     public InMemoryUserDetailsManager userDetailsManager(){
 
         UserDetails joao = User.builder()
-                .username("joao")
-                .password("{noop}test123")
+                .username("zallera")
+                .password("{noop}321654")
                 .roles("Funcionario")
                 .build();
 
