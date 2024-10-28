@@ -18,13 +18,13 @@ public class DemoSecurityConfig {
         UserDetails zallera = User.builder()
                 .username("zallera")
                 .password("{noop}potatoes")
-                .roles("FUNCIONARIO")
+                .roles("FUNCIONARIO", "GERENTE", "ADM")
                 .build();
 
         UserDetails maria = User.builder()
                 .username("maria")
                 .password("{noop}22")
-                .roles("FUNCIONARIO")
+                .roles("FUNCIONARIO", "GERENTE")
                 .build();
 
         UserDetails pedro = User.builder()
@@ -39,10 +39,10 @@ public class DemoSecurityConfig {
                 .roles("FUNCIONARIO")
                 .build();
 
-        UserDetails lore = User.builder()
-                .username("lore")
+        UserDetails bilina = User.builder()
+                .username("bilina")
                 .password("{noop}22")
-                .roles("FUNCIONARIO")
+                .roles("FUNCIONARIO", "GERENTE")
                 .build();
 
         UserDetails osmund = User.builder()
@@ -51,7 +51,7 @@ public class DemoSecurityConfig {
                 .roles("FUNCIONARIO")
                 .build();
 
-        return new InMemoryUserDetailsManager(zallera, maria, pedro, osmund, lore, luca);
+        return new InMemoryUserDetailsManager(zallera, maria, pedro, osmund, bilina, luca);
     }
 
     @Bean
@@ -60,7 +60,7 @@ public class DemoSecurityConfig {
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/").hasRole("FUNCIONARIO")
-                        .requestMatchers("/gerentes/**").hasRole("GERENTES")
+                        .requestMatchers("/gerentes/**").hasRole("GERENTE")
                         .requestMatchers("/systems/**").hasRole("ADM")
                         .anyRequest().authenticated()
                 ).formLogin(form->
