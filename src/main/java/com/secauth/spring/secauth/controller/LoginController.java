@@ -12,4 +12,9 @@ public class LoginController {
     }
 
 
+    //requestMapping para /acesso-negado
+    @GetMapping("/acesso-negado")
+    public String mostraAcessoNegado(){
+        return "acesso-negado";
+    }
 }
