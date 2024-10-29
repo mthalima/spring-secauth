@@ -21,4 +21,9 @@ public class DemoController {
     public String showGerentes(){
         return "gerentes";
     }
+
+    @GetMapping("/systems")
+    public String showSystems(){
+        return "systems";
+    }
 }
