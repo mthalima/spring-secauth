@@ -21,19 +21,23 @@
 </p>
 
 <!-- add um link para "/gerentes" -->
-<hr>
-<p>
-    <a th:href="@{/gerentes}">Lista de gerentes</a>
+<div sec:authorize="hasRole('GERENTE')">
+    <hr>
+    <p>
+        <a th:href="@{/gerentes}">Lista de gerentes</a>
     Acesso dos gerentes.
-</p>
-<hr>
+    </p>
+    <hr>
+</div>
 
 <!-- add um link para "/systems" -->
 <hr>
-<p>
-    <a th:href="@{/systems}">Conteudo de adms</a>
-    Acesso dos adms.
-</p>
+<div sec:authorize="hasRole('ADM')">
+    <p>
+        <a th:href="@{/systems}">Conteudo de adms</a>
+        Acesso dos adms.
+    </p>
+</div>
 
 <!-- Botão de Logout -->
 <form action="#" th:action="@{/logout}" method="POST">
