@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
+
 @Configuration
 public class DemoSecurityConfig {
 
@@ -17,14 +18,8 @@ public class DemoSecurityConfig {
 
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
-
-
         return new JdbcUserDetailsManager(dataSource);
     }
-
-
-
-
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
