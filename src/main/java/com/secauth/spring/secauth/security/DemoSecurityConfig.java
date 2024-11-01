@@ -17,9 +17,11 @@ public class DemoSecurityConfig {
     // Suporte a JDBC
 
     @Bean
-    public UserDetailsManager userDetailsManager(DataSource dataSource){
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
+
         return new JdbcUserDetailsManager(dataSource);
     }
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
