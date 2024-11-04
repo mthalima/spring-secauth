@@ -26,11 +26,8 @@ public class DemoSecurityConfig {
                 "select user_id, pw, active from members where user_id=?");
 
         //query para retornar as authorities/roles por username
-        jdbcUserDetailsManager.setGroupAuthoritiesByUsernameQuery(
-                "select user_id, pw, role from roles where user_id=?"
-        );
-
-
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select user_id, role from roles where user_id=?");
 
         return jdbcUserDetailsManager;
     }
